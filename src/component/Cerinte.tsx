@@ -20,7 +20,8 @@ const styles = createStyles({
     },
     cardBox: {
         position:'relative',
-        marginLeft:'100px',
+        marginLeft:'auto',
+        marginRight:'auto',
         marginTop:'50px'
     },
 	button: {
