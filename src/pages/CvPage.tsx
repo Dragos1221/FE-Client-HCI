@@ -2,6 +2,7 @@ import { Container, createStyles } from '@material-ui/core';
 import * as React from 'react';
 import { Component } from 'react';
 import Cv from '../component/cvComponent'
+import Evaluare from '../component/Evaluare'
 
 export interface CvPageProps {
     classes:any;
@@ -32,9 +33,9 @@ class CvPage extends React.Component<CvPageProps, CvPageState> {
     render() { 
         return (
             <Container >
-                <Cv {...this.state}>
+                <Evaluare {...this.state}>
 
-                </Cv>
+                </Evaluare>
 
        </Container>  );
     }
