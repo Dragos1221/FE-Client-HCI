@@ -1,30 +1,25 @@
-import { Button, Card, CardContent, createStyles, Icon, Typography, withStyles } from '@material-ui/core';
+import { Button, Card, CardActions, CardContent, Container, createStyles, Icon, Typography, withStyles } from '@material-ui/core';
 import * as React from 'react';
 import { Component } from 'react';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 
-export interface CerinteProps {
+export interface InstructiuniProps {
     classes:any;
-    titlu:string;
-    cerinte:string;
+    text:string;
     submit():void;
 }
  
-export interface CerinteState {
+export interface InstructiuniState {
     
 }
- 
+
 const styles = createStyles({
-    container: {
-    },
     card: {
         width:'500px'
     },
     cardBox: {
-        position:'relative',
-        marginTop:'50px',
-        display:'inline-block',
-        marginLeft:'34%',
+        marginTop:'2%',
+        marginLeft:'33%'
     },
 	button: {
         width:'100px'
@@ -36,29 +31,21 @@ const styles = createStyles({
         bottom:'20px'
 	},
 });
-
-class Cerinte extends React.Component<CerinteProps, CerinteState> {
-    render() { 
-        const {classes, titlu, cerinte} = this.props;
+ 
+class Instructiuni extends React.Component<InstructiuniProps, InstructiuniState> {
+    render() {
+        const {classes, text} = this.props; 
         return (
-            <div className={classes.container}>
+            <div>
                 <div className={classes.cardBox}>
                     <Card className={classes.card}>
                         <CardContent>
                             <Icon><InsertEmoticonIcon/></Icon>
                             <Typography variant="h5" component="h2">
-                                {titlu}
+                                Instructiuni
                             </Typography>
                             <Typography variant="body2" component="p">
-                                1. {titlu} 
-                                <br/>
-                                2. {titlu} 
-                                <br/>
-                                3. {titlu} 
-                                <br/>
-                                4. {titlu} 
-                                <br/>
-                                5. {titlu} 
+                                {text}
                             </Typography>
                         </CardContent>
                     </Card>
@@ -79,4 +66,4 @@ class Cerinte extends React.Component<CerinteProps, CerinteState> {
     }
 }
  
-export default withStyles(styles)(Cerinte);
+export default withStyles(styles)(Instructiuni);
