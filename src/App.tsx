@@ -6,6 +6,7 @@ import CerintePage from '../src/pages/CerintePage'
 import CvPage from '../src/pages/CvPage';
 import SelectieCVPage from './pages/SelectieCVPage';
 import InstructiuniPage from './pages/InstructiuniPage';
+import ShowJobsAndCvs from './pages/ShowJobsAndCvPage';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact={true} path="/cv" component={CvPage}></Route>
           <Route exact={true} path="/selectieCV" component={SelectieCVPage}></Route>
           <Route exact={true} path="/instructiuni" component={InstructiuniPage}></Route>
+          <Route exact={true} path="/show" component={ShowJobsAndCvs}></Route>
      </Switch>
    </Router>
   );
