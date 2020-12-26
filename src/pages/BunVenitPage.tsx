@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { Component } from 'react';
 import BunVenit from '../component/BunVenit';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 
-export interface BunVenitPageProps {
+export interface BunVenitPageProps extends RouteComponentProps {
     
 }
  
-export interface BunVenitPageState {
+export interface BunVenitPageState  {
     age:string;
     gender:string;
     specializare:string;
@@ -38,7 +39,10 @@ class BunVenitPage extends React.Component<BunVenitPageProps, BunVenitPageState>
             specializare: this.state.specializare,
         };
         try {
-            console.log(body);
+            localStorage.setItem('age',this.state.age);
+            localStorage.setItem('gender',this.state.gender);
+            localStorage.setItem('specializare',this.state.specializare);
+            this.props.history.push('/cerinte')
         } catch (err) {
             console.log(err.data);
         }

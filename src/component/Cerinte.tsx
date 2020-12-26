@@ -45,18 +45,17 @@ class Cerinte extends React.Component<CerinteProps, CerinteState> {
                         <CardContent>
                             <Icon><InsertEmoticonIcon/></Icon>
                             <Typography variant="h5" component="h2">
-                                {titlu}
+                                Instructiunii
                             </Typography>
                             <Typography variant="body2" component="p">
-                                1. {titlu} 
-                                <br/>
-                                2. {titlu} 
-                                <br/>
-                                3. {titlu} 
-                                <br/>
-                                4. {titlu} 
-                                <br/>
-                                5. {titlu} 
+                            Există două posturi de muncă pentru care va trebui să consultaţi CV-urile primite din partea candidaţilor/ aplicanţilor. Cele două posturi sunt Manager Resurse Umane şi Asistent Resurse Umane.  
+                            </Typography>
+                            <Typography>
+                                Pentru fiecare post, aveţi de realizat următoarele: 
+                                De citit descrierea fiecărui post şi cerinţele implicate de acest post
+                                De consultat CV-urile persoanelor care au aplicat pentru acest post 
+                                De evaluat CV-ul fiecărei persoane care a aplicat pentru acest post 
+                                De ales dintre CV-urile prezentate, un singur CV al persoanei pe care o veţi angaja. 
                             </Typography>
                         </CardContent>
                     </Card>
