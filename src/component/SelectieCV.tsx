@@ -1,6 +1,5 @@
-import { Button, Card, CardContent, CardHeader, CardMedia, createStyles, Typography, withStyles } from '@material-ui/core';
+import { Button, Card, CardContent, CardMedia, createStyles, Typography, withStyles } from '@material-ui/core';
 import * as React from 'react';
-import { Component } from 'react';
 
 export interface SelectieCVProps {
     classes: any;

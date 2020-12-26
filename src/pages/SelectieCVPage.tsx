@@ -28,7 +28,7 @@ class SelectieCVPage extends React.Component<SelectieCVPageProps, SelectieCVPage
 
     render() { 
         return (
-            <div>
+            <div style={{width:'100%'}}>
                 <SelectieCV
                     {...this.state}
                 />

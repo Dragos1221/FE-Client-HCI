@@ -1,11 +1,17 @@
-import { FormControl, FormControlLabel, FormLabel, RadioGroup, Slider } from '@material-ui/core';
+import { Button, CardMedia, createStyles, FormControl, FormControlLabel, FormLabel, RadioGroup, Slider, withStyles } from '@material-ui/core';
 import { Radio } from '@material-ui/core';
 import { Card, CardContent, CardHeader, Typography } from '@material-ui/core';
 import * as React from 'react';
-import { Component } from 'react';
 
 export interface EvaluareProps {
-    
+    classes:any;
+    varsta:any;
+    gen:any;
+    statutMarital:any;
+    educatie:any;
+    experientaDeMunca:any;
+    imgSrc:any;
+    nume:any;
 }
  
 export interface EvaluareState {
@@ -13,6 +19,28 @@ export interface EvaluareState {
     valuetext:any;
     marksList:any;
 }
+
+const styles = createStyles({
+    conainer : {
+        display:'flex',
+        flexDirection:'row',
+        justifyContent:'space-between',
+    },
+    cvBox : {
+        width:'48%'
+    },
+    evaluationBox : {
+        width:'48%'
+    },
+    cardImage: {
+        height:'350px',
+        width:'auto'
+    },
+    nextButton : {
+        marginTop:'20px',
+        float:'right'
+    }
+});
 
 const marks = [
     {
@@ -128,36 +156,67 @@ class Evaluare extends React.Component<EvaluareProps, EvaluareState> {
     }
 
     render() { 
+        const {classes, nume, varsta, statutMarital, imgSrc, educatie, experientaDeMunca} = this.props;
         return (
-            <div>
-                <Card>
-                    <CardHeader
-                        title="Evaluare CV"
-                    />
-                    <Typography>
-                        Gândindu-vă la Dvs., în ce măsură vă simţiţi acum: 
-                    </Typography>
-                    <CardContent>
-                        {
-                            this.state.evalList.map((elem:any , index:number)=>{
-                                return this.cumTesimti(elem,index);
-                            })
-                        }
-                    </CardContent>
+            <div className={classes.conainer}>
+                <div className={classes.cvBox}> 
+                    <Card>
+                        <CardContent>
+                            <Typography variant="h5" component="h2">
+                                {nume}
+                            </Typography>
+                            <CardMedia image = {imgSrc} className={classes.cardImage} />
+                            <Typography>
+                                Varsta: {varsta}
+                                <br/>
+                                Stare maritala: {statutMarital}
+                                <br /> <br />
+                                Educatie:
+                                <br /> <br />
+                                {educatie}
+                                <br /> <br />
+                                Experienta de munca:
+                                <br /> <br />
+                                {experientaDeMunca}
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                </div>
+                <div className = {classes.evaluationBox}>
+                    <Card>
+                        <CardHeader
+                            title="Evaluare CV"
+                        />
                         <Typography>
-                            Marcaţi cu un X pe segmentul 0-10, măsura în care consideraţi că fiecare dintre următoarele aspecte este caracteristic persoanei al cărei CV l-aţi studiat anterior: 
+                            Gândindu-vă la Dvs., în ce măsură vă simţiţi acum: 
                         </Typography>
-                    <CardContent>
-                   {
-                       this.state.marksList.map((elem:any)=>{
-                           return this.slider(elem);
-                       })
-                   }
-                    </CardContent>
-                </Card>
+                        <CardContent>
+                            {
+                                this.state.evalList.map((elem:any , index:number)=>{
+                                    return this.cumTesimti(elem,index);
+                                })
+                            }
+                        </CardContent>
+                            <Typography>
+                                Marcaţi cu un X pe segmentul 0-10, măsura în care consideraţi că fiecare dintre următoarele aspecte este caracteristic persoanei al cărei CV l-aţi studiat anterior: 
+                            </Typography>
+                        <CardContent>
+                    {
+                        this.state.marksList.map((elem:any)=>{
+                            return this.slider(elem);
+                        })
+                    }
+                        </CardContent>
+                    </Card>
+                    <div className={classes.nextButton}>
+                        <Button variant="contained" color="primary">
+                            Next
+                        </Button>
+                    </div>
+                </div>
             </div>
         );
     }
 }
  
-export default Evaluare;
+export default withStyles(styles)(Evaluare);
