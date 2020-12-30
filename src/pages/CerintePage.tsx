@@ -5,7 +5,7 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 import ServiceApi from '../remote/ServiceApi'
 
 export interface CerintePageProps extends RouteComponentProps {
-    
+    nextFunction:any;
 }
  
 export interface CerintePageState {
@@ -41,7 +41,7 @@ class CerintePage extends React.Component<CerintePageProps, CerintePageState> {
         return (
             <Cerinte
                 {...this.state}
-                submit = {this.submit}
+                nextFunction = {this.props.nextFunction}
             >
             </Cerinte>
         );

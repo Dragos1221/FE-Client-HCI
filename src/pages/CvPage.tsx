@@ -4,6 +4,7 @@ import Evaluare from '../component/Evaluare'
 
 export interface CvPageProps {
     classes:any;
+    nextFunction:any;
 }
  
 export interface CvPageState {
@@ -35,7 +36,7 @@ class CvPage extends React.Component<CvPageProps, CvPageState> {
     render() { 
         return (
             <Container >
-                <Evaluare {...this.state}>
+                <Evaluare {...this.state } {...this.props}>
 
                 </Evaluare>
 

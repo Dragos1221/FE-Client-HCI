@@ -7,7 +7,8 @@ export interface CerinteProps {
     classes:any;
     titlu:string;
     cerinte:string;
-    submit():void;
+    //submit():void;
+    nextFunction:any;
 }
  
 export interface CerinteState {
@@ -69,7 +70,7 @@ class Cerinte extends React.Component<CerinteProps, CerinteState> {
                     fullWidth
                     variant="contained"
                     color="primary"
-                    onClick={this.props.submit}
+                    onClick={this.props.nextFunction}
                 >
                 Next
                 </Button>

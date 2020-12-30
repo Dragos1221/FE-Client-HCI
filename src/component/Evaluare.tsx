@@ -12,6 +12,7 @@ export interface EvaluareProps {
     experientaDeMunca:any;
     imgSrc:any;
     nume:any;
+    nextFunction:any;
 }
  
 export interface EvaluareState {
@@ -209,7 +210,7 @@ class Evaluare extends React.Component<EvaluareProps, EvaluareState> {
                         </CardContent>
                     </Card>
                     <div className={classes.nextButton}>
-                        <Button variant="contained" color="primary">
+                        <Button variant="contained" color="primary" onClick={this.props.nextFunction}>
                             Next
                         </Button>
                     </div>
