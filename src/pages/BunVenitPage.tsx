@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Component } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 import BunVenit from '../component/BunVenit';
 
-export interface BunVenitPageProps {
+export interface BunVenitPageProps extends RouteComponentProps {
     
 }
  
@@ -32,16 +33,11 @@ class BunVenitPage extends React.Component<BunVenitPageProps, BunVenitPageState>
 
     submit = async() => {
         this.validate();
-        const body = {
-            age: this.state.age,
-            gender: this.state.gender,
-            specializare: this.state.specializare,
-        };
-        try {
-            console.log(body);
-        } catch (err) {
-            console.log(err.data);
-        }
+        localStorage.setItem("varsta",this.state.age);
+        localStorage.setItem("gen",this.state.gender);
+        localStorage.setItem("specializare",this.state.specializare);
+        this.props.history.push('/show');
+
     };
 
     validate = () => {

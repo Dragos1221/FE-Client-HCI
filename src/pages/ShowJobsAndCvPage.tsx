@@ -8,7 +8,6 @@ export interface ShowProps {
     
 }
 
-
 export interface CvInterface{
     varsta:any;
     gen:any;
@@ -76,10 +75,7 @@ class Show extends React.Component<ShowProps, ShowState> {
                 nume:"any",
             }
             return this.showCv(cv)
-        }
-
-        return <div>Loading....</div>
-        
+        }  
     }
 
 

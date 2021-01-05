@@ -151,7 +151,7 @@ class BunVenit extends React.Component<BunVenitProps, BunVenitState> {
   							fullWidth
   							variant="contained"
   							color="primary"
-  							//onClick={this.props.submit}
+  							onClick={this.props.submit}
   						>
                 Next
   						</Button>
