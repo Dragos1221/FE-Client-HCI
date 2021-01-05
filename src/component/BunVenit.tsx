@@ -1,4 +1,4 @@
-import { Avatar, Button, createStyles, FormControl, FormControlLabel, InputLabel, MenuItem, Radio, RadioGroup, Select, Typography, withStyles } from '@material-ui/core';
+import { Avatar, Button, createStyles, FormControl, FormControlLabel, FormLabel, InputLabel, MenuItem, Radio, RadioGroup, Select, Typography, withStyles } from '@material-ui/core';
 import * as React from 'react';
 import { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
@@ -11,6 +11,10 @@ export interface BunVenitProps {
     specializare:string;
     handleChange2(data: any): void;
     submit():void;
+    changeError(type: any): void;
+    isVarstaError: boolean;
+    isGenError: boolean;
+    isSpecializareError: boolean;
 }
  
 export interface BunVenitState {
@@ -84,7 +88,8 @@ class BunVenit extends React.Component<BunVenitProps, BunVenitState> {
     //state = { :  }
 
     handleData = (type: any) => (event: any) => {
-        console.log("ajunge");
+        this.props.changeError({type});
+
         this.props.handleChange2({
             [type]: event.target.value,
         });
@@ -99,9 +104,13 @@ class BunVenit extends React.Component<BunVenitProps, BunVenitState> {
 
         return lst;
     }
+
+    submit = () => {
+        this.props.submit();
+    }
     
     render() { 
-        const {classes} = this.props;
+        const {classes, isGenError, isVarstaError, isSpecializareError} = this.props;
         return ( 
             <form className={classes.page}>
                 <div className={classes.titleBox}>
@@ -116,6 +125,7 @@ class BunVenit extends React.Component<BunVenitProps, BunVenitState> {
                     <FormControl variant="outlined" className={classes.formControl}>
                     <InputLabel>Varsta</InputLabel>
                         <Select
+                            error = {isVarstaError}
                             value={this.props.age}
                             onChange={this.handleData('age')}
                             label="Varsta"
@@ -127,7 +137,7 @@ class BunVenit extends React.Component<BunVenitProps, BunVenitState> {
                     </FormControl>
                 </div>
                 <div className={classes.genderBox}>
-                    <label className={classes.genLabel}>Selectati genul: </label>
+                    <FormLabel error={isGenError} className={classes.genLabel}>Selectati genul: </FormLabel>
                     <RadioGroup aria-label="gender" name="gender1" value={this.props.gender} onChange={this.handleData('gender')} row>
                         <FormControlLabel value="male" control={<Radio />} label="Barbat" />
                         <FormControlLabel value="female" control={<Radio />} label="Femeie" />
@@ -136,6 +146,7 @@ class BunVenit extends React.Component<BunVenitProps, BunVenitState> {
                 </div>
                 <div className={classes.specBox}>
                     <TextField
+                        error = {isSpecializareError}
                         className={classes.spec}
                         label="Specializare"
                         multiline
@@ -147,7 +158,8 @@ class BunVenit extends React.Component<BunVenitProps, BunVenitState> {
                 </div>
                 <div className={classes.buttonBox}>
   						<Button
-  							className={classes.button}
+                              className={classes.button}
+                              onClick={this.submit}
   							fullWidth
   							variant="contained"
   							color="primary"
