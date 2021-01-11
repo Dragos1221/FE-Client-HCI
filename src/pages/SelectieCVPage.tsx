@@ -30,6 +30,78 @@ class SelectieCVPage extends React.Component<SelectieCVPageProps, SelectieCVPage
                 "professional": "professional history3",
                 "sex": "F"
             },
+            {
+                "age": "16",
+                "cv_id": 3,
+                "education": "idk",
+                "id": 1,
+                "job_id": 2,
+                "name": "Moise",
+                "order_in_job": 1,
+                "photo_id": "https://firebasestorage.googleapis.com/v0/b/jobs-cv.appspot.com/o/Thu%20Dec%2024%202020%2012%3A39%3A54%20GMT%2B0200%20(Eastern%20European%20Standard%20Time)-asd.jpg?alt=media&token=7a6c7fe6-7ace-4512-81e8-ab8e3c341ed8",
+                "professional": "professional history3",
+                "sex": "F"
+            },
+            {
+                "age": "16",
+                "cv_id": 3,
+                "education": "idk",
+                "id": 1,
+                "job_id": 2,
+                "name": "Moise",
+                "order_in_job": 1,
+                "photo_id": "https://firebasestorage.googleapis.com/v0/b/jobs-cv.appspot.com/o/Thu%20Dec%2024%202020%2012%3A39%3A54%20GMT%2B0200%20(Eastern%20European%20Standard%20Time)-asd.jpg?alt=media&token=7a6c7fe6-7ace-4512-81e8-ab8e3c341ed8",
+                "professional": "professional history3",
+                "sex": "F"
+            },
+            {
+                "age": "16",
+                "cv_id": 3,
+                "education": "idk",
+                "id": 1,
+                "job_id": 2,
+                "name": "Moise",
+                "order_in_job": 1,
+                "photo_id": "https://firebasestorage.googleapis.com/v0/b/jobs-cv.appspot.com/o/Thu%20Dec%2024%202020%2012%3A39%3A54%20GMT%2B0200%20(Eastern%20European%20Standard%20Time)-asd.jpg?alt=media&token=7a6c7fe6-7ace-4512-81e8-ab8e3c341ed8",
+                "professional": "professional history3",
+                "sex": "F"
+            },
+            {
+                "age": "16",
+                "cv_id": 3,
+                "education": "idk",
+                "id": 1,
+                "job_id": 2,
+                "name": "Moise",
+                "order_in_job": 1,
+                "photo_id": "https://firebasestorage.googleapis.com/v0/b/jobs-cv.appspot.com/o/Thu%20Dec%2024%202020%2012%3A39%3A54%20GMT%2B0200%20(Eastern%20European%20Standard%20Time)-asd.jpg?alt=media&token=7a6c7fe6-7ace-4512-81e8-ab8e3c341ed8",
+                "professional": "professional history3",
+                "sex": "F"
+            },
+            {
+                "age": "16",
+                "cv_id": 3,
+                "education": "idk",
+                "id": 1,
+                "job_id": 2,
+                "name": "Moise",
+                "order_in_job": 1,
+                "photo_id": "https://firebasestorage.googleapis.com/v0/b/jobs-cv.appspot.com/o/Thu%20Dec%2024%202020%2012%3A39%3A54%20GMT%2B0200%20(Eastern%20European%20Standard%20Time)-asd.jpg?alt=media&token=7a6c7fe6-7ace-4512-81e8-ab8e3c341ed8",
+                "professional": "professional history3",
+                "sex": "F"
+            },
+            {
+                "age": "16",
+                "cv_id": 3,
+                "education": "idk",
+                "id": 1,
+                "job_id": 2,
+                "name": "Moise",
+                "order_in_job": 1,
+                "photo_id": "https://firebasestorage.googleapis.com/v0/b/jobs-cv.appspot.com/o/Thu%20Dec%2024%202020%2012%3A39%3A54%20GMT%2B0200%20(Eastern%20European%20Standard%20Time)-asd.jpg?alt=media&token=7a6c7fe6-7ace-4512-81e8-ab8e3c341ed8",
+                "professional": "professional history3",
+                "sex": "F"
+            },
            ]
         }
     }

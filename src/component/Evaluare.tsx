@@ -93,7 +93,7 @@ class Evaluare extends React.Component<EvaluareProps, EvaluareState> {
         super(props);
         this.state={
             evalList:["interesat","exaltat" , "puternic" , "entuziasmat"],
-            marksList:["angajabila" , 'placuta' , 'agreabila' , 'onesta'],
+            marksList:["angajabil(a)" , 'placut(a)' , 'agreabil(a)' , 'onest(a)', 'muncitor / muncitoare','inteligent(a)','dinamic(a)','are o fata atractiva'],
             valuetext:0
         }
     }
