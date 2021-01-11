@@ -1,13 +1,13 @@
 import { Button, Card, CardContent, CardMedia, createStyles, Typography, withStyles } from '@material-ui/core';
+import { listenerCount } from 'process';
 import * as React from 'react';
+import { RouteComponentProps } from 'react-router-dom';
+import { SelectieCVPageProps } from '../pages/SelectieCVPage';
 
 export interface SelectieCVProps {
     classes: any;
-    nume: string;
-    varsta: string;
-    ocupatie: string;
-    imgSrc: string;
-    stareConjugala: string;
+    cvList:[];
+    submit:any;
 }
  
 export interface SelectieCVState {
@@ -53,116 +53,39 @@ const styles = createStyles({
     }
 });
 
+
 class SelectieCV extends React.Component<SelectieCVProps, SelectieCVState> {
+    getCv = (elem:any)=>{
+        return ( <Card>
+            <CardContent>
+                <Typography variant="h5" component="h2">
+                    {elem.name}
+                </Typography>
+                <div>
+                    <img src={elem.photo_id} width="300px" height="300px"></img>
+                </div>
+                <Typography>
+                     Varsta: {elem.varsta}
+                    <br/>
+                    Ocupatie: {elem.ocupatie}
+                    <br/>
+                    Stare conjugala: {elem.stareConjugala}
+                </Typography>
+            </CardContent>
+        </Card>)
+    }
     render() { 
-        const {classes, nume, varsta, ocupatie, imgSrc, stareConjugala} = this.props;
+        const {classes} = this.props;
         return (
             <div className={classes.bigContainer}>
                 <div className = {classes.containerCV}>
                     <div className={classes.row}>
                         <div className={classes.rowItem}>
-                            <Card>
-                                <CardContent>
-                                    <Typography variant="h5" component="h2">
-                                        {nume}
-                                    </Typography>
-                                    <CardMedia image = {imgSrc} className={classes.cardImage} />
-                                    <Typography>
-                                        Varsta: {varsta}
-                                        <br/>
-                                        Ocupatie: {ocupatie}
-                                        <br/>
-                                        Stare conjugala: {stareConjugala}
-                                    </Typography>
-                                </CardContent>
-                            </Card>
-                        </div>
-                        <div className={classes.rowItem}>
-                            <Card>
-                                <CardContent>
-                                    <Typography variant="h5" component="h2">
-                                        {nume}
-                                    </Typography>
-                                    <CardMedia image = {imgSrc} className={classes.cardImage} />
-                                    <Typography>
-                                        Varsta: {varsta}
-                                        <br/>
-                                        Ocupatie: {ocupatie}
-                                        <br/>
-                                        Stare conjugala: {stareConjugala}
-                                    </Typography>
-                                </CardContent>
-                            </Card>
-                        </div>
-                        <div className={classes.rowItem}>
-                            <Card>
-                                <CardContent>
-                                    <Typography variant="h5" component="h2">
-                                        {nume}
-                                    </Typography>
-                                    <CardMedia image = {imgSrc} className={classes.cardImage} />
-                                    <Typography>
-                                        Varsta: {varsta}
-                                        <br/>
-                                        Ocupatie: {ocupatie}
-                                        <br/>
-                                        Stare conjugala: {stareConjugala}
-                                    </Typography>
-                                </CardContent>
-                            </Card>
-                        </div>
-                    </div>
-                    <div className={classes.row}>
-                        <div className={classes.rowItem}>
-                            <Card>
-                                <CardContent>
-                                    <Typography variant="h5" component="h2">
-                                        {nume}
-                                    </Typography>
-                                    <CardMedia image = {imgSrc} className={classes.cardImage} />
-                                    <Typography>
-                                        Varsta: {varsta}
-                                        <br/>
-                                        Ocupatie: {ocupatie}
-                                        <br/>
-                                        Stare conjugala: {stareConjugala}
-                                    </Typography>
-                                </CardContent>
-                            </Card>
-                        </div>
-                        <div className={classes.rowItem}>
-                            <Card>
-                                <CardContent>
-                                    <Typography variant="h5" component="h2">
-                                        {nume}
-                                    </Typography>
-                                    <CardMedia image = {imgSrc} className={classes.cardImage} />
-                                    <Typography>
-                                        Varsta: {varsta}
-                                        <br/>
-                                        Ocupatie: {ocupatie}
-                                        <br/>
-                                        Stare conjugala: {stareConjugala}
-                                    </Typography>
-                                </CardContent>
-                            </Card>
-                        </div>
-                        <div className={classes.rowItem}>
-                            <Card>
-                                <CardContent>
-                                    <Typography variant="h5" component="h2">
-                                        {nume}
-                                    </Typography>
-                                    <CardMedia image = {imgSrc} className={classes.cardImage} />
-                                    <Typography>
-                                        Varsta: {varsta}
-                                        <br/>
-                                        Ocupatie: {ocupatie}
-                                        <br/>
-                                        Stare conjugala: {stareConjugala}
-                                    </Typography>
-                                </CardContent>
-                            </Card>
+                            {
+                                this.props.cvList.map((elem:any)=>{
+                                    return this.getCv(elem);
+                                })
+                            }
                         </div>
                     </div>
                 </div>
@@ -173,7 +96,7 @@ class SelectieCV extends React.Component<SelectieCVProps, SelectieCVState> {
                         </Button>
                     </div>
                     <div className={classes.vizualizareButtonBox}>
-                        <Button variant="contained" color="primary">
+                        <Button variant="contained" color="primary" onClick={this.props.submit} >
                             Next
                         </Button>
                     </div>
