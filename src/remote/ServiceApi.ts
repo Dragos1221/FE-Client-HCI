@@ -15,11 +15,11 @@ class ServiceApi {
     }
 
     async getAllJobs() {
-    	return this.instance.get('/process/allJob');
+    	return this.instance.get('/process/alljobs');
     }
 
     async getCvFromJob(jobId:string){
-        return this.instance.get<CvInterface[]>('/process/job/'+jobId+'/chooseCV')
+        return this.instance.get<CvInterface[]>('/process/forjob/'+jobId);
     }
 }
 export default ServiceApi;

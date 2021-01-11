@@ -5,9 +5,7 @@ import Evaluare from '../component/Evaluare'
 export interface CvPageProps {
     classes:any;
     nextFunction:any;
-}
- 
-export interface CvPageState {
+    
     varsta:any;
     gen:any;
     statutMarital:any;
@@ -15,6 +13,10 @@ export interface CvPageState {
     experientaDeMunca:any;
     imgSrc:any;
     nume:any;
+}
+ 
+export interface CvPageState {
+   
 }
 
 

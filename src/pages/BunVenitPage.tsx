@@ -33,6 +33,7 @@ class BunVenitPage extends React.Component<BunVenitPageProps, BunVenitPageState>
 
     submit = async() => {
         this.validate();
+        localStorage.clear();
         localStorage.setItem("varsta",this.state.age);
         localStorage.setItem("gen",this.state.gender);
         localStorage.setItem("specializare",this.state.specializare);

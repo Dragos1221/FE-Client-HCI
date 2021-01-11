@@ -4,7 +4,8 @@ import ServiceApi from '../remote/ServiceApi';
 import Cerinte from '../component/Cerinte';
 import Cvpage from '../component/cvComponent';
 import CvPage from './CvPage';
-export interface ShowProps {
+import { RouteComponentProps } from 'react-router-dom';
+export interface ShowProps extends RouteComponentProps {
     
 }
 
@@ -23,7 +24,8 @@ export interface ShowState {
     cvList:any;
     curentJob:number;
     curentCv:number;
-    lenghtCv:number
+    lenghtCv:number;
+    lengthJob:number;
 }
  
 class Show extends React.Component<ShowProps, ShowState> {
@@ -37,58 +39,93 @@ class Show extends React.Component<ShowProps, ShowState> {
         this.state={
             jobsList:[],
             cvList:[],
-            curentJob:1,
+            curentJob:0,
             curentCv:0,
             lenghtCv:0,
+            lengthJob:0,
         }
-        this.curentJob=1;
-        this.curentCv=0;
+        this.curentJob=0;
+        this.curentCv=-1;
     }
 
+
     async componentDidMount(){
-        console.log('am ajuns aicis3');
+        this.curentJob=parseInt(localStorage.getItem("curentJob")||"-1")+1;
         const jobs = await this.service.getAllJobs();
-        const cv= await this.service.getCvFromJob('2');
+        const firstId = jobs.data[this.curentJob].id;
+        localStorage.setItem("curentJob",""+this.curentJob);
+        localStorage.setItem("curentJobId",""+firstId);
+        const cv= await this.service.getCvFromJob(firstId);
         const cvL =cv.data.length;
         this.setState({
-            jobsList:jobs,
-            cvList:cv,
+            jobsList:jobs.data,
+            cvList:cv.data,
             lenghtCv:cvL,
+            lengthJob:jobs.data.length
         })
+        console.log(this.state);
     }
 
     getJobOrCv = ()=>{
         console.log('am ajuns aicis');
-        if(this.curentCv < 1)
+        if(this.curentCv < 0)
         {
             return this.showJob("ceva");
         }
         else
         {
+            const curentCvFromList = this.state.cvList[this.curentCv];
             const cv ={
-                varsta:"any",
-                gen:"any",
-                statutMarital:"any",
-                educatie:"any",
-                experientaDeMunca:"any",
-                imgSrc:"any",
-                nume:"any",
+                varsta:curentCvFromList.age,
+                gen:curentCvFromList.sex,
+                statutMarital:curentCvFromList.name,
+                educatie:curentCvFromList.education,
+                experientaDeMunca:curentCvFromList.professional,
+                imgSrc:curentCvFromList.photo_id,
+                nume:curentCvFromList.name,
             }
             return this.showCv(cv)
         }  
     }
 
 
-    next =()=>{
+    next = async()=>{
+        console.log(this.state , this.curentCv , this.curentJob);
         this.curentCv+=1;
-        if(this.curentCv > this.state.lenghtCv)
+        if(this.curentCv >= this.state.lenghtCv)
         {
-            this.curentCv=0;
+            this.curentCv=-1;
             this.curentJob+=1;
+            if(this.curentJob>= this.state.lengthJob)
+            {
+                this.props.history.push("/");
+                return ;
+            }
+            this.props.history.push("/selectieCV");
+            return;
+
+            const firstId = this.state.jobsList[this.curentJob].id;
+            try{
+                const cv= await this.service.getCvFromJob(firstId);
+                const cvL =cv.data.length;
+                this.setState({
+                    curentCv:this.curentCv,
+                    cvList:cv.data,
+                    lenghtCv:cvL
+                });
+                return
+            }catch(err){
+                this.setState({
+                    curentCv:-1,
+                    cvList:[],
+                    lenghtCv:0
+            });
+            return;
+            }
         }
         this.setState({
-            curentCv:this.curentCv,
-        })
+            curentCv:this.curentCv
+        });
     }
 
     showJob(job:any)
@@ -98,7 +135,7 @@ class Show extends React.Component<ShowProps, ShowState> {
 
     showCv(cv:CvInterface)
     {
-        return <CvPage classes={''}  nextFunction={this.next}></CvPage>
+        return <CvPage classes={''}  {...cv} nextFunction={this.next}></CvPage>
     }
     render() {
         console.log('am ajuns aicis2'); 
